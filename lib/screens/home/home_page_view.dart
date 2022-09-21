@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:imdp_api_app/controller/api_services.dart';
 import 'package:imdp_api_app/product/service/project_dio.dart';
 import 'package:imdp_api_app/screens/home/home_page_provider.dart';
+import 'package:imdp_api_app/screens/home/widgets/card_info.dart';
+import 'package:imdp_api_app/screens/home/widgets/card_poster.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/by_name_model.dart';
+import '../../product/global/theme_notifier.dart';
 
 class HomePageView extends StatefulWidget {
   const HomePageView({Key? key}) : super(key: key);
@@ -25,7 +28,16 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
       create: (context) => HomePageProvider(BookService(service)),
       builder: ((context, child) {
         return Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+            title: const Text("Movie List"),
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    context.read<ThemeNotifier>().changeTheme();
+                  },
+                  icon: const Icon(Icons.dark_mode_rounded)),
+            ],
+          ),
           body: _nameListView(context, context.watch<HomePageProvider>().data ?? []),
         );
       }),
@@ -34,15 +46,30 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
 
   ListView _nameListView(BuildContext context, List<Result> items) {
     return ListView.builder(
-      itemCount: context.watch<HomePageProvider>().data?.length,
+      itemCount: (context.watch<HomePageProvider>().data?.length),
       itemBuilder: (context, index) {
-        return Container(
-          margin: EdgeInsets.all(20),
-          height: 60,
-          width: 60,
-          color: Colors.red,
+        return InkWell(
+          onTap: (() {}),
+          child: _createMovieCard(items, index),
         );
       },
+    );
+  }
+
+  Widget _createMovieCard(List<Result> items, int index) {
+    return Card(
+      elevation: 5,
+      child: Row(
+        children: [
+          CardPoster(image: items[index].poster.toString()),
+          Expanded(
+              child: CardMovieInfo(
+            title: items[index].title.toString(),
+            year: items[index].year.toString(),
+            type: items[index].type.toString(),
+          ))
+        ],
+      ),
     );
   }
 }
