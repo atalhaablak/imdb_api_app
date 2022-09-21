@@ -38,7 +38,12 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
                   icon: const Icon(Icons.dark_mode_rounded)),
             ],
           ),
-          body: _nameListView(context, context.watch<HomePageProvider>().data ?? []),
+          body: Column(
+            children: [
+              const _TempPlaceHolder(),
+              Expanded(child: _nameListView(context, context.watch<HomePageProvider>().data ?? [])),
+            ],
+          ),
         );
       }),
     );
@@ -70,6 +75,24 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
           ))
         ],
       ),
+    );
+  }
+}
+
+class _TempPlaceHolder extends StatelessWidget {
+  const _TempPlaceHolder({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Selector<HomePageProvider, bool>(
+      builder: (context, value, child) {
+        return value ? const CircularProgressIndicator() : const Text("");
+      },
+      selector: (context, provider) {
+        return provider.isLoading;
+      },
     );
   }
 }

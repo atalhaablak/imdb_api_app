@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CardPoster extends StatefulWidget {
@@ -15,7 +16,11 @@ class _CardPosterState extends State<CardPoster> {
       height: 180,
       child: ClipRRect(
         borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
-        child: Image.network(widget.image),
+        child: CachedNetworkImage(
+          imageUrl: widget.image,
+          placeholder: (context, url) => CircularProgressIndicator(),
+          errorWidget: (context, url, error) => Icon(Icons.error),
+        ),
       ),
     );
   }

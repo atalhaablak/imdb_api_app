@@ -25,7 +25,13 @@ class _CardMovieInfoState extends State<CardMovieInfo> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(widget.title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          Text(widget.title,
+              maxLines: 3,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                overflow: TextOverflow.fade,
+              )),
           const SizedBox(height: 10),
           Expanded(
               child: Column(
