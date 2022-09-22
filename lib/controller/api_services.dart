@@ -27,6 +27,8 @@ class BookService extends IBookService {
       final jsonBody = response.data;
       if (jsonBody is Map<String, dynamic>) {
         return SearchByIdModel.fromJson(jsonBody);
+        // freezed paketi kullanılmalı.
+        //
       }
     }
     return throw ProjectException.noData;

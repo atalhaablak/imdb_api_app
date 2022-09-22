@@ -4,6 +4,8 @@ import 'package:imdp_api_app/product/service/project_dio.dart';
 import 'package:imdp_api_app/screens/home/home_page_provider.dart';
 import 'package:imdp_api_app/screens/home/widgets/card_info.dart';
 import 'package:imdp_api_app/screens/home/widgets/card_poster.dart';
+import 'package:imdp_api_app/screens/home/widgets/create_movie_card.dart';
+import 'package:imdp_api_app/screens/home/widgets/lsw_movie.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/by_name_model.dart';
@@ -49,32 +51,24 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
     );
   }
 
-  ListView _nameListView(BuildContext context, List<Result> items) {
-    return ListView.builder(
-      itemCount: (context.watch<HomePageProvider>().data?.length),
-      itemBuilder: (context, index) {
-        return InkWell(
-          onTap: (() {}),
-          child: _createMovieCard(items, index),
-        );
+// error handle -> apiden gelen hatayı gösterir
+  Widget _nameListView(BuildContext context, List<Result>? items) {
+    return Selector<HomePageProvider, dynamic>(
+      builder: (context, value, child) {
+        return NameListView(items: items!);
+      },
+      selector: (context, provider) {
+        return provider;
       },
     );
   }
 
   Widget _createMovieCard(List<Result> items, int index) {
-    return Card(
-      elevation: 5,
-      child: Row(
-        children: [
-          CardPoster(image: items[index].poster.toString()),
-          Expanded(
-              child: CardMovieInfo(
-            title: items[index].title.toString(),
-            year: items[index].year.toString(),
-            type: items[index].type.toString(),
-          ))
-        ],
-      ),
+    return CreateMovieCard(
+      image: items[index].poster.toString(),
+      title: items[index].title.toString(),
+      year: items[index].year.toString(),
+      type: items[index].type.toString(),
     );
   }
 }

@@ -3,6 +3,8 @@ class SearchByIdModel {
 
   SearchByIdModel({this.result});
 
+  // freezed kullanılacak fromjson
+
   SearchByIdModel.fromJson(Map<String, dynamic> json) {
     result = json['result'] != null ? Result.fromJson(json['result']) : null;
   }

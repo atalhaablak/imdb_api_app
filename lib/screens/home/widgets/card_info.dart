@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:imdp_api_app/product/global/app_text_style.dart';
 
-class CardMovieInfo extends StatefulWidget {
+class CardMovieInfo extends StatelessWidget {
   const CardMovieInfo({
     Key? key,
     required this.title,
@@ -14,11 +14,6 @@ class CardMovieInfo extends StatefulWidget {
   final String type;
 
   @override
-  State<CardMovieInfo> createState() => _CardMovieInfoState();
-}
-
-class _CardMovieInfoState extends State<CardMovieInfo> {
-  @override
   Widget build(BuildContext context) {
     return Container(
       height: 180,
@@ -27,7 +22,7 @@ class _CardMovieInfoState extends State<CardMovieInfo> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.title,
+            title,
             maxLines: 3,
             style: AppTextStyle.movieTitle.textStyle,
           ),
@@ -37,8 +32,8 @@ class _CardMovieInfoState extends State<CardMovieInfo> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Yıl: ${widget.year}", style: AppTextStyle.subTitle.textStyle),
-              Text("Tür: ${widget.type}", style: AppTextStyle.subTitle.textStyle),
+              Text("Yıl: $year", style: AppTextStyle.subTitle.textStyle),
+              Text("Tür: $type", style: AppTextStyle.subTitle.textStyle),
             ],
           ))
         ],
