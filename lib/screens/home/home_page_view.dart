@@ -29,23 +29,28 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
       create: (context) => HomePageViewModel(BookService(service)),
       builder: ((context, child) {
         return Scaffold(
-          appBar: AppBar(
-            title: const Text(AppText.homePage),
-            actions: [
-              IconButton(
-                  onPressed: () {
-                    context.read<ThemeNotifier>().changeTheme();
-                  },
-                  icon: const Icon(Icons.dark_mode_rounded)),
-            ],
-          ),
-          body: Column(
-            children: [
-              const TempPlaceHolder(),
-              Expanded(child: _nameListView(context, context.watch<HomePageViewModel>().data)),
-            ],
-          ),
-        );
+            appBar: AppBar(
+              title: const Text(AppText.homePage),
+              actions: [
+                IconButton(
+                    onPressed: () {
+                      context.read<ThemeNotifier>().changeTheme();
+                    },
+                    icon: const Icon(Icons.dark_mode_rounded)),
+              ],
+            ),
+            body: context.read<HomePageViewModel>().isError
+                ? Center(
+                    child: Text(
+                      context.read<HomePageViewModel>().errorMessage,
+                    ),
+                  )
+                : Column(
+                    children: [
+                      const TempPlaceHolder(),
+                      Expanded(child: _nameListView(context, context.watch<HomePageViewModel>().data)),
+                    ],
+                  ));
       }),
     );
   }

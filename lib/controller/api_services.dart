@@ -22,28 +22,26 @@ class BookService extends IBookService {
   @override
   Future<SearchByIdModel?> searchById(String id) async {
     final response = await dio.get(ApiStatic.searchById);
-
-    if (response.statusCode == HttpStatus.ok) {
-      final jsonBody = response.data;
-      if (jsonBody is Map<String, dynamic>) {
-        return SearchByIdModel.fromJson(jsonBody);
-        // freezed paketi kullanılmalı.
-        //
+    try {
+      if (response.statusCode == HttpStatus.ok) {
+        final jsonBody = response.data;
+        if (jsonBody is Map<String, dynamic>) {
+          return SearchByIdModel.fromJson(jsonBody);
+          // freezed paketi kullanılmalı.
+        }
       }
+    } catch (e) {
+      throw Exception(ProjectException.noData);
     }
-    return throw ProjectException.noData;
   }
 
   @override
   Future<SearchByNameModel?> searchByName(String name) async {
     final response = await dio.get(ApiStatic.searchByName + name);
 
-    if (response.statusCode == HttpStatus.ok) {
-      final jsonBody = response.data;
-      if (jsonBody is Map<String, dynamic>) {
-        return SearchByNameModel.fromJson(jsonBody);
-      }
+    final jsonBody = response.data;
+    if (jsonBody is Map<String, dynamic>) {
+      return SearchByNameModel.fromJson(jsonBody);
     }
-    return throw ProjectException.noData;
   }
 }
