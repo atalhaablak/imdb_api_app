@@ -6,6 +6,7 @@ import 'package:imdp_api_app/screens/home/widgets/card_info.dart';
 import 'package:imdp_api_app/screens/home/widgets/card_poster.dart';
 import 'package:imdp_api_app/screens/home/widgets/create_movie_card.dart';
 import 'package:imdp_api_app/screens/home/widgets/lsw_movie.dart';
+import 'package:imdp_api_app/screens/home/widgets/templace_holder.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/by_name_model.dart';
@@ -42,8 +43,8 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
           ),
           body: Column(
             children: [
-              const _TempPlaceHolder(),
-              Expanded(child: _nameListView(context, context.watch<HomePageProvider>().data ?? [])),
+              const TempPlaceHolder(),
+              Expanded(child: _nameListView(context, context.watch<HomePageProvider>().data)),
             ],
           ),
         );
@@ -59,33 +60,6 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
       },
       selector: (context, provider) {
         return provider;
-      },
-    );
-  }
-
-  Widget _createMovieCard(List<Result> items, int index) {
-    return CreateMovieCard(
-      image: items[index].poster.toString(),
-      title: items[index].title.toString(),
-      year: items[index].year.toString(),
-      type: items[index].type.toString(),
-    );
-  }
-}
-
-class _TempPlaceHolder extends StatelessWidget {
-  const _TempPlaceHolder({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Selector<HomePageProvider, bool>(
-      builder: (context, value, child) {
-        return value ? const CircularProgressIndicator() : const Text("");
-      },
-      selector: (context, provider) {
-        return provider.isLoading;
       },
     );
   }
