@@ -18,7 +18,6 @@ class _CardPosterState extends State<CardPoster> {
         borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
         child: CachedNetworkImage(
           imageUrl: widget.image,
-          placeholder: (context, url) => CircularProgressIndicator(),
           errorWidget: (context, url, error) => Icon(Icons.error),
         ),
       ),
