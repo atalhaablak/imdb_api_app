@@ -3,7 +3,7 @@ import 'package:imdp_api_app/controller/api_services.dart';
 import 'package:imdp_api_app/models/by_name_model.dart';
 import 'package:imdp_api_app/product/service/project_dio.dart';
 
-class HomePageProvider extends ChangeNotifier with ProjectDioMixin {
+class HomePageViewModel extends ChangeNotifier with ProjectDioMixin {
   final IBookService bookService;
   bool isLoading = false;
   List<Result>? data = [];
@@ -13,7 +13,7 @@ class HomePageProvider extends ChangeNotifier with ProjectDioMixin {
     notifyListeners();
   }
 
-  HomePageProvider(this.bookService) {
+  HomePageViewModel(this.bookService) {
     _fetchByName();
   }
 

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:imdp_api_app/controller/api_services.dart';
+import 'package:imdp_api_app/product/global/app_text.dart';
 import 'package:imdp_api_app/product/service/project_dio.dart';
 import 'package:imdp_api_app/screens/home/home_page_provider.dart';
-import 'package:imdp_api_app/screens/home/widgets/card_info.dart';
-import 'package:imdp_api_app/screens/home/widgets/card_poster.dart';
-import 'package:imdp_api_app/screens/home/widgets/create_movie_card.dart';
 import 'package:imdp_api_app/screens/home/widgets/lsw_movie.dart';
 import 'package:imdp_api_app/screens/home/widgets/templace_holder.dart';
 import 'package:provider/provider.dart';
@@ -27,12 +25,12 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<HomePageProvider>(
-      create: (context) => HomePageProvider(BookService(service)),
+    return ChangeNotifierProvider<HomePageViewModel>(
+      create: (context) => HomePageViewModel(BookService(service)),
       builder: ((context, child) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text("Movie List"),
+            title: const Text(AppText.homePage),
             actions: [
               IconButton(
                   onPressed: () {
@@ -44,7 +42,7 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
           body: Column(
             children: [
               const TempPlaceHolder(),
-              Expanded(child: _nameListView(context, context.watch<HomePageProvider>().data)),
+              Expanded(child: _nameListView(context, context.watch<HomePageViewModel>().data)),
             ],
           ),
         );
@@ -54,7 +52,7 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
 
 // error handle -> apiden gelen hatayı gösterir
   Widget _nameListView(BuildContext context, List<Result>? items) {
-    return Selector<HomePageProvider, dynamic>(
+    return Selector<HomePageViewModel, dynamic>(
       builder: (context, value, child) {
         return NameListView(items: items!);
       },

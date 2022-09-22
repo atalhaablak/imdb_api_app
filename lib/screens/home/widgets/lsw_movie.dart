@@ -11,10 +11,10 @@ class NameListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<HomePageProvider, dynamic>(
+    return Selector<HomePageViewModel, dynamic>(
       builder: (context, value, child) {
         return ListView.builder(
-          itemCount: (context.watch<HomePageProvider>().data?.length),
+          itemCount: (context.watch<HomePageViewModel>().data?.length),
           itemBuilder: (context, index) {
             return InkWell(
               onTap: (() {

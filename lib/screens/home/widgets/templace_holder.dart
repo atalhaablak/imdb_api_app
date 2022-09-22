@@ -11,7 +11,7 @@ class TempPlaceHolder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<HomePageProvider, bool>(
+    return Selector<HomePageViewModel, bool>(
       builder: (context, value, child) {
         return value ? const CircularProgressIndicator() : const Text("");
       },
