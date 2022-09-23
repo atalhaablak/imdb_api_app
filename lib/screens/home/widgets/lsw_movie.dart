@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../../models/by_name_model.dart';
-import '../home_page_provider.dart';
+import '../../../models/model.dart';
+import '../home_page_view_model.dart';
 import 'create_movie_card.dart';
 
 class NameListView extends StatelessWidget {

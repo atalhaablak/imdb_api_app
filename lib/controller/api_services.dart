@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:imdp_api_app/models/by_id_model.dart';
-import 'package:imdp_api_app/models/by_name_model.dart';
+import 'package:imdp_api_app/models/model.dart';
 import 'package:imdp_api_app/product/errors/error_message.dart';
 import 'package:imdp_api_app/product/service/api_static.dart';
 
@@ -11,7 +11,7 @@ abstract class IBookService {
   final Dio dio;
 
   Future<SearchByIdModel?> searchById(String id);
-  Future<SearchByNameModel?> searchByName(String name);
+  Future<ByNameModel?> searchByName(String name);
 }
 
 enum RequestPath { searchByName, searchById }
@@ -33,15 +33,16 @@ class BookService extends IBookService {
     } catch (e) {
       throw Exception(ProjectException.noData);
     }
+    return null;
   }
 
   @override
-  Future<SearchByNameModel?> searchByName(String name) async {
+  Future<ByNameModel?> searchByName(String name) async {
     final response = await dio.get(ApiStatic.searchByName + name);
-
     final jsonBody = response.data;
     if (jsonBody is Map<String, dynamic>) {
-      return SearchByNameModel.fromJson(jsonBody);
+      return ByNameModel.fromJson(jsonBody);
     }
+    return null;
   }
 }

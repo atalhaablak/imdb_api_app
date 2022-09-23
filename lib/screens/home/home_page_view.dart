@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:imdp_api_app/controller/api_services.dart';
 import 'package:imdp_api_app/product/global/app_text.dart';
 import 'package:imdp_api_app/product/service/project_dio.dart';
-import 'package:imdp_api_app/screens/home/home_page_provider.dart';
+import 'package:imdp_api_app/screens/home/home_page_view_model.dart';
 import 'package:imdp_api_app/screens/home/widgets/lsw_movie.dart';
 import 'package:imdp_api_app/screens/home/widgets/templace_holder.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/by_name_model.dart';
+import '../../models/model.dart';
 import '../../product/global/theme_notifier.dart';
 
 class HomePageView extends StatefulWidget {
@@ -55,7 +55,6 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
     );
   }
 
-// error handle -> apiden gelen hatayı gösterir
   Widget _nameListView(BuildContext context, List<Result>? items) {
     return Selector<HomePageViewModel, dynamic>(
       builder: (context, value, child) {
