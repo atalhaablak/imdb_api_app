@@ -1,6 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../models/model.dart';
+import '../../../models/nameModel/by_name_model.dart';
 import '../home_page_view_model.dart';
 import 'create_movie_card.dart';
 
@@ -17,7 +18,9 @@ class NameListView extends StatelessWidget {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: (() {
-                print(items[index]);
+                if (kDebugMode) {
+                  print(items[index].imdbId);
+                }
               }),
               child: CreateMovieCard(
                 image: items[index].poster.toString(),

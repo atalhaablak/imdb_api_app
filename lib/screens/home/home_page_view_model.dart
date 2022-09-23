@@ -1,12 +1,10 @@
-import 'dart:math';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:imdp_api_app/controller/api_services.dart';
+import 'package:imdp_api_app/controller/injection.dart';
 import 'package:imdp_api_app/product/service/project_dio.dart';
 import 'package:imdp_api_app/screens/home/model/random_image.dart';
-
-import '../../models/model.dart';
+import '../../models/nameModel/by_name_model.dart';
 
 class HomePageViewModel extends ChangeNotifier with ProjectDioMixin {
   final IBookService bookService;
@@ -24,10 +22,12 @@ class HomePageViewModel extends ChangeNotifier with ProjectDioMixin {
     _fetchByName();
   }
 
+  //(await bookService.searchByName(RandomMovie().choiceRandomMovie()))?.result ?? [];
+
   Future<void> _fetchByName() async {
     _changeLoading();
     try {
-      data = (await bookService.searchByName(RandomMovie().choiceRandomMovie()))?.result ?? [];
+      data = (await serviceLocator<IBookService>().searchByName(RandomMovie().choiceRandomMovie()))?.result ?? [];
     } on DioError catch (e) {
       isLoading = false;
       isError = true;
