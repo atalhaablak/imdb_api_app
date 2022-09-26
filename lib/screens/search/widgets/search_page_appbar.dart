@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:imdp_api_app/product/global/app_text.dart';
 import 'package:imdp_api_app/product/global/app_text_style.dart';
 
-class UserInfoAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const UserInfoAppBar({super.key});
+class SearchPageAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const SearchPageAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class UserInfoAppBar extends StatelessWidget implements PreferredSizeWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              AppText.myAccount,
+              AppText.searchPage,
               style: AppTextStyle.movieTitle.textStyle,
             ),
             IconButton(onPressed: () {}, icon: const Icon(Icons.close)),
