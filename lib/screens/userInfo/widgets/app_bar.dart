@@ -20,11 +20,7 @@ class UserInfoAppBar extends StatelessWidget implements PreferredSizeWidget {
               AppText.myAccount,
               style: AppTextStyle.movieTitle.textStyle,
             ),
-            IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePageView()));
-                },
-                icon: const Icon(Icons.close)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.close)),
           ],
         ),
       ),

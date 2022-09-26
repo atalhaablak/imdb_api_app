@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:imdp_api_app/controller/injection.dart';
-import 'package:imdp_api_app/product/global/app_text.dart';
-import 'package:imdp_api_app/product/global/app_text_style.dart';
 import 'package:imdp_api_app/product/service/project_dio.dart';
 import 'package:imdp_api_app/screens/home/home_page_view_model.dart';
 import 'package:imdp_api_app/screens/home/widgets/home_app_bar.dart';
 import 'package:imdp_api_app/screens/home/widgets/lsw_movie.dart';
 import 'package:imdp_api_app/screens/home/widgets/templace_holder.dart';
-import 'package:imdp_api_app/screens/userInfo/user_info_view.dart';
 import 'package:provider/provider.dart';
 import '../../models/nameModel/by_name_model.dart';
-import '../../product/global/theme_notifier.dart';
 
 class HomePageView extends StatefulWidget {
   const HomePageView({Key? key}) : super(key: key);

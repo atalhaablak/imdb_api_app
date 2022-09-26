@@ -19,6 +19,7 @@ class _TabbarViewState extends State<TabbarView> {
       builder: ((context, child) {
         return DefaultTabController(
           length: context.read<TabbarViewModel>().tabList.length,
+          initialIndex: 1,
           child: Scaffold(
             bottomNavigationBar: TabBar(
               tabs: context.read<TabbarViewModel>().tabList,
