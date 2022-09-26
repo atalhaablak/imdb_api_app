@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../product/global/app_text_style.dart';
 import '../user_info_view_model.dart';
@@ -23,7 +24,15 @@ class BuildInfoList extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(infoList[index].toString(), style: AppTextStyle.infoText.textStyle),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.chevron_right_outlined)),
+              IconButton(
+                onPressed: () {},
+                icon: SvgPicture.asset(
+                  "assets/icons/chevron_right.svg",
+                  color: Colors.black,
+                  width: 6,
+                  height: 12,
+                ),
+              ),
             ],
           ),
         );

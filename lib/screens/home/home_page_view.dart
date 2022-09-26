@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:imdp_api_app/controller/injection.dart';
 import 'package:imdp_api_app/product/global/app_text.dart';
+import 'package:imdp_api_app/product/global/app_text_style.dart';
 import 'package:imdp_api_app/product/service/project_dio.dart';
 import 'package:imdp_api_app/screens/home/home_page_view_model.dart';
+import 'package:imdp_api_app/screens/home/widgets/home_app_bar.dart';
 import 'package:imdp_api_app/screens/home/widgets/lsw_movie.dart';
 import 'package:imdp_api_app/screens/home/widgets/templace_holder.dart';
 import 'package:imdp_api_app/screens/userInfo/user_info_view.dart';
@@ -17,7 +19,10 @@ class HomePageView extends StatefulWidget {
   State<HomePageView> createState() => _HomePageViewState();
 }
 
-class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
+class _HomePageViewState extends State<HomePageView> with ProjectDioMixin, AutomaticKeepAliveClientMixin {
+  @override
+  bool wantKeepAlive = true;
+
   @override
   void initState() {
     super.initState();
@@ -29,33 +34,20 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin {
       create: (context) => serviceLocator<HomePageViewModel>(),
       builder: ((context, child) {
         return Scaffold(
-            appBar: AppBar(
-              leading: IconButton(
-                icon: Icon(Icons.person),
-                onPressed: (() {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserInfoView()));
-                }),
-              ),
-              title: const Text(AppText.homePage),
-              actions: [
-                IconButton(
-                    onPressed: () {
-                      context.read<ThemeNotifier>().changeTheme();
-                    },
-                    icon: const Icon(Icons.dark_mode_rounded)),
-              ],
-            ),
             body: context.read<HomePageViewModel>().isError
                 ? Center(
                     child: Text(
                       context.read<HomePageViewModel>().errorMessage,
                     ),
                   )
-                : Column(
-                    children: [
-                      const TempPlaceHolder(),
-                      Expanded(child: _nameListView(context, context.watch<HomePageViewModel>().data)),
-                    ],
+                : SafeArea(
+                    child: Column(
+                      children: [
+                        const Padding(padding: EdgeInsets.symmetric(horizontal: 8.0), child: HomePageAppBar()),
+                        const TempPlaceHolder(),
+                        Expanded(child: _nameListView(context, context.watch<HomePageViewModel>().data)),
+                      ],
+                    ),
                   ));
       }),
     );

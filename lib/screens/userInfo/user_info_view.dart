@@ -27,31 +27,33 @@ class _UserInfoViewState extends State<UserInfoView> {
         create: (context) => serviceLocator<UserInfoViewModel>(),
         builder: ((context, child) {
           return Scaffold(
-            appBar: const UserInfoAppBar(),
-            body: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  UserCard(user: user),
-                  SizedBox(height: MediaQuery.of(context).size.width * 1, child: BuildInfoList()),
-                  Container(
-                    height: 300,
-                    color: Color(cardAvatarColor.colorValue),
-                    child: _createActiveMyOrder(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 24),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Hesabımı Kapat",
-                        style:
-                            AppTextStyle.subTitle.textStyle?.copyWith(color: Colors.black, decoration: TextDecoration.underline),
+            body: SafeArea(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const UserInfoAppBar(),
+                    UserCard(user: user),
+                    SizedBox(height: MediaQuery.of(context).size.width * 1, child: BuildInfoList()),
+                    Container(
+                      height: 300,
+                      color: Color(cardAvatarColor.colorValue),
+                      child: _createActiveMyOrder(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 24),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Hesabımı Kapat",
+                          style: AppTextStyle.subTitle.textStyle
+                              ?.copyWith(color: Colors.black, decoration: TextDecoration.underline),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imdp_api_app/product/extension/string_extension.dart';
 import 'package:imdp_api_app/screens/userInfo/user_model.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../product/global/app_text.dart';
 import '../../../product/global/app_text_style.dart';
 
@@ -43,7 +43,19 @@ class UserCard extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 27),
-              child: IconButton(onPressed: () {}, icon: const Icon(Icons.logout_outlined)),
+              child: Row(
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset(
+                      "assets/icons/log_out_icon.svg",
+                      color: Colors.black,
+                      width: 19,
+                      height: 15,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
