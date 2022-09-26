@@ -9,6 +9,6 @@ class User {
   }
 
   String get fullName {
-    return (name + surname);
+    return ("$name $surname");
   }
 }

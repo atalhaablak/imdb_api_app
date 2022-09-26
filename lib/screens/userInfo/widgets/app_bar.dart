@@ -4,7 +4,7 @@ import 'package:imdp_api_app/product/global/app_text_style.dart';
 
 import '../../home/home_page_view.dart';
 
-class UserInfoAppBar extends StatelessWidget {
+class UserInfoAppBar extends StatelessWidget implements PreferredSizeWidget {
   const UserInfoAppBar({super.key});
 
   @override
@@ -30,4 +30,8 @@ class UserInfoAppBar extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => Size.fromHeight(AppBar().preferredSize.height);
 }
