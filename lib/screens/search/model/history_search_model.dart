@@ -1,54 +1,13 @@
-import 'dart:convert';
+import 'package:hive/hive.dart';
 
+part 'history_search_model.g.dart';
+
+@HiveType(typeId: 0)
 class HistorySearchModel {
+  @HiveField(0)
   final String word;
+  @HiveField(1)
   final DateTime date;
 
-  HistorySearchModel(
-    this.word,
-    this.date,
-  );
-
-  List<HistorySearchModel> historyList = [];
-
-  HistorySearchModel copyWith({
-    String? word,
-    DateTime? date,
-  }) {
-    return HistorySearchModel(
-      word ?? this.word,
-      date ?? this.date,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'word': word,
-      'date': date.millisecondsSinceEpoch,
-    };
-  }
-
-  factory HistorySearchModel.fromMap(Map<String, dynamic> map) {
-    return HistorySearchModel(
-      map['word'] as String,
-      DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory HistorySearchModel.fromJson(String source) => HistorySearchModel.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  @override
-  String toString() => 'HistorySearchModel(word: $word, date: $date)';
-
-  @override
-  bool operator ==(covariant HistorySearchModel other) {
-    if (identical(this, other)) return true;
-
-    return other.word == word && other.date == date;
-  }
-
-  @override
-  int get hashCode => word.hashCode ^ date.hashCode;
+  HistorySearchModel({required this.word, required this.date});
 }

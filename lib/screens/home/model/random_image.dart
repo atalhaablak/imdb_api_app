@@ -1,7 +1,7 @@
 import 'dart:math';
 
 class RandomMovie {
-  final List _movieNameList = ["Inception", "Pirates", "Batman", "Family"];
+  final List _movieNameList = ["Inception", "Pirates", "Batman", "Family", "Formula"];
 
   String choiceRandomMovie() {
     int index = Random().nextInt(_movieNameList.length);
