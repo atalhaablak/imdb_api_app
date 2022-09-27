@@ -4,22 +4,24 @@ import 'package:imdp_api_app/product/global/app_text_style.dart';
 class CustomSearchDelegate extends SearchDelegate {
   @override
   List<Widget>? buildActions(BuildContext context) {
-    IconButton(
-      onPressed: (() {
-        if (query.isEmpty) {
-          close(context, null); // Close searchbar
-        } else {
-          query = "";
-        }
-      }),
-      icon: Icon(Icons.clear),
-    );
+    return [
+      IconButton(
+        onPressed: (() {
+          if (query.isEmpty) {
+            close(context, null); // Close searchbar
+          } else {
+            query = "";
+          }
+        }),
+        icon: const Icon(Icons.clear),
+      )
+    ];
   }
 
   @override
   Widget? buildLeading(BuildContext context) {
-    IconButton(
-      icon: Icon(Icons.arrow_back),
+    return IconButton(
+      icon: const Icon(Icons.arrow_back),
       onPressed: () => close(context, null), // close searchbar
     );
   }
