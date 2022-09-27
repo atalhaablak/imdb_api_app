@@ -21,7 +21,7 @@ class _SearchPageViewState extends State<SearchPageView> {
         return Scaffold(
           body: SafeArea(
             child: Column(
-              children: const [
+              children: [
                 SearchPageAppBar(),
               ],
             ),
@@ -29,28 +29,5 @@ class _SearchPageViewState extends State<SearchPageView> {
         );
       },
     );
-  }
-}
-
-class CustomSearchDelegate extends SearchDelegate {
-  @override
-  List<Widget>? buildActions(BuildContext context) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Widget? buildLeading(BuildContext context) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    // TODO: implement buildSuggestions
-    throw UnimplementedError();
   }
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:imdp_api_app/product/global/app_text.dart';
 import 'package:imdp_api_app/product/global/app_text_style.dart';
 
+import 'custom_search_delegate.dart';
+
 class SearchPageAppBar extends StatelessWidget implements PreferredSizeWidget {
   const SearchPageAppBar({super.key});
 
@@ -18,7 +20,11 @@ class SearchPageAppBar extends StatelessWidget implements PreferredSizeWidget {
               AppText.searchPage,
               style: AppTextStyle.movieTitle.textStyle,
             ),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.close)),
+            IconButton(
+                onPressed: () {
+                  showSearch(context: context, delegate: CustomSearchDelegate());
+                },
+                icon: Icon(Icons.search_rounded)),
           ],
         ),
       ),
