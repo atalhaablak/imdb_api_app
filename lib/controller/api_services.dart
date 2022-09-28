@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:dio/dio.dart';
 import 'package:imdp_api_app/models/idModel/by_id_model.dart';
 import 'package:imdp_api_app/product/errors/error_message.dart';
 import 'package:imdp_api_app/product/service/api_static.dart';

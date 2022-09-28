@@ -1,3 +1,5 @@
+// ignore_for_file: must_call_super
+
 import 'package:flutter/material.dart';
 import 'package:imdp_api_app/controller/injection.dart';
 import 'package:imdp_api_app/product/service/project_dio.dart';
@@ -39,7 +41,7 @@ class _HomePageViewState extends State<HomePageView> with ProjectDioMixin, Autom
                 : SafeArea(
                     child: Column(
                       children: [
-                        const Padding(padding: EdgeInsets.symmetric(horizontal: 8.0), child: HomePageAppBar()),
+                        const Padding(padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0), child: HomePageAppBar()),
                         const TempPlaceHolder(),
                         Expanded(child: _nameListView(context, context.watch<HomePageViewModel>().data)),
                       ],

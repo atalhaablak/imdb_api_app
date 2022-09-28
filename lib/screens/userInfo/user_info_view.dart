@@ -35,7 +35,7 @@ class _UserInfoViewState extends State<UserInfoView> {
                   children: [
                     const UserInfoAppBar(),
                     UserCard(user: user),
-                    SizedBox(height: MediaQuery.of(context).size.width * 1, child: BuildInfoList()),
+                    SizedBox(height: 525, child: BuildInfoList()),
                     Container(
                       height: 300,
                       color: Color(cardAvatarColor.colorValue),

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
+import 'package:imdp_api_app/screens/search/search_view.dart';
 import '../../../product/global/app_text.dart';
 import '../../../product/global/app_text_style.dart';
-import '../../../product/global/theme_notifier.dart';
 
 class HomePageAppBar extends StatelessWidget {
   const HomePageAppBar({super.key});
@@ -19,9 +17,13 @@ class HomePageAppBar extends StatelessWidget {
         ),
         IconButton(
             onPressed: () {
-              context.read<ThemeNotifier>().changeTheme();
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SearchPageView(),
+                  ));
             },
-            icon: const Icon(Icons.dark_mode_rounded)),
+            icon: const Icon(Icons.search_outlined)),
       ],
     );
   }

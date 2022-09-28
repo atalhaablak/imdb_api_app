@@ -1,3 +1,5 @@
+// ignore_for_file: must_call_super
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -5,10 +7,15 @@ import '../../../models/nameModel/by_name_model.dart';
 import '../home_page_view_model.dart';
 import 'create_movie_card.dart';
 
-class NameListView extends StatelessWidget {
+class NameListView extends StatefulWidget {
   const NameListView({super.key, required this.items});
   final List<Result> items;
 
+  @override
+  State<NameListView> createState() => _NameListViewState();
+}
+
+class _NameListViewState extends State<NameListView> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return Selector<HomePageViewModel, dynamic>(
@@ -19,14 +26,14 @@ class NameListView extends StatelessWidget {
             return InkWell(
               onTap: (() {
                 if (kDebugMode) {
-                  print(items[index].imdbId);
+                  print(widget.items[index].imdbId);
                 }
               }),
               child: CreateMovieCard(
-                image: items[index].poster.toString(),
-                title: items[index].title.toString(),
-                year: items[index].year.toString(),
-                type: items[index].type.toString(),
+                image: widget.items[index].poster.toString(),
+                title: widget.items[index].title.toString(),
+                year: widget.items[index].year.toString(),
+                type: widget.items[index].type.toString(),
               ),
             );
           },
@@ -37,4 +44,7 @@ class NameListView extends StatelessWidget {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

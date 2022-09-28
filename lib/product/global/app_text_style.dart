@@ -29,7 +29,6 @@ extension AppTextStyleExtension on AppTextStyle {
         return const TextStyle(
           fontSize: 16,
         );
-        break;
     }
   }
 }
