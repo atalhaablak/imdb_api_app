@@ -5,6 +5,7 @@ import 'package:imdp_api_app/controller/injection.dart';
 import 'package:imdp_api_app/product/global/project_context.dart';
 import 'package:imdp_api_app/product/global/theme_notifier.dart';
 import 'package:imdp_api_app/screens/historySearch/model/history_search_model.dart';
+import 'package:imdp_api_app/screens/home/home_page_view.dart';
 import 'package:imdp_api_app/screens/home/home_page_view_model.dart';
 import 'package:imdp_api_app/screens/search/search_view.dart';
 import 'package:imdp_api_app/screens/search/search_view_model.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
       create: (context) => TabbarViewModel(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const SearchPageView(),
+        home: const HomePageView(),
         theme: context.watch<ThemeNotifier>().currentTheme,
       ),
     );

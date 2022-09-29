@@ -1,12 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:imdp_api_app/controller/injection.dart';
-import 'package:imdp_api_app/screens/historySearch/history_search.dart';
 import 'package:imdp_api_app/screens/search/search_view_model.dart';
 import 'package:imdp_api_app/screens/search/widgets/search_appbar.dart';
 import 'package:imdp_api_app/screens/search/widgets/search_lsw_movie.dart';
 import 'package:provider/provider.dart';
-import '../home/widgets/create_movie_card.dart';
 
 class SearchPageView extends StatefulWidget {
   const SearchPageView({super.key});
