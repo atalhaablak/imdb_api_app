@@ -1,21 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: non_constant_identifier_names
+
 part of 'by_name_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ByNameModel _$$_ByNameModelFromJson(Map<String, dynamic> json) =>
-    _$_ByNameModel(
+_$_ByNameModel _$$_ByNameModelFromJson(Map<String, dynamic> json) => _$_ByNameModel(
       success: json['success'] as bool?,
-      result: (json['result'] as List<dynamic>?)
-          ?.map((e) => Result.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      result: (json['result'] as List<dynamic>?)?.map((e) => Result.fromJson(e as Map<String, dynamic>)).toList(),
     );
 
-Map<String, dynamic> _$$_ByNameModelToJson(_$_ByNameModel instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_ByNameModelToJson(_$_ByNameModel instance) => <String, dynamic>{
       'success': instance.success,
       'result': instance.result,
     };

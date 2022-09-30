@@ -4,16 +4,17 @@ import 'package:imdp_api_app/controller/api_services.dart';
 import 'package:imdp_api_app/controller/injection.dart';
 import 'package:imdp_api_app/product/global/project_context.dart';
 import 'package:imdp_api_app/product/global/theme_notifier.dart';
+import 'package:imdp_api_app/screens/detail/detail_page_view_model.dart';
 import 'package:imdp_api_app/screens/historySearch/model/history_search_model.dart';
 import 'package:imdp_api_app/screens/home/home_page_view.dart';
 import 'package:imdp_api_app/screens/home/home_page_view_model.dart';
-import 'package:imdp_api_app/screens/search/search_view.dart';
 import 'package:imdp_api_app/screens/search/search_view_model.dart';
 import 'package:imdp_api_app/screens/tabbar/tabbar_view_model.dart';
+
 import 'package:provider/provider.dart';
 
 // ignore: constant_identifier_names
-const HistorySearchBox = "HistorySearch";
+const HistorySearchBox = "HistorySearchList";
 
 void main() async {
   init();
@@ -25,6 +26,7 @@ void main() async {
         create: (context) => ThemeNotifier(),
       ),
       ChangeNotifierProvider(create: ((context) => SearchPageViewModel())),
+      ChangeNotifierProvider(create: ((context) => DetailPageViewModel())),
       ChangeNotifierProvider(create: ((context) => HomePageViewModel(serviceLocator<IBookService>()))),
     ],
     builder: (context, child) => const MyApp(),

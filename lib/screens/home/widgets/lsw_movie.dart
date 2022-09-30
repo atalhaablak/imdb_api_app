@@ -2,6 +2,9 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:imdp_api_app/controller/injection.dart';
+import 'package:imdp_api_app/screens/detail/detail_page_view.dart';
+import 'package:imdp_api_app/screens/detail/detail_page_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../models/nameModel/by_name_model.dart';
 import '../home_page_view_model.dart';
@@ -25,6 +28,12 @@ class _NameListViewState extends State<NameListView> with AutomaticKeepAliveClie
           itemBuilder: (context, index) {
             return InkWell(
               onTap: (() {
+                serviceLocator<DetailPageViewModel>().fetchById(widget.items[index].imdbId.toString());
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DetailPageView(),
+                    ));
                 if (kDebugMode) {
                   print(widget.items[index].imdbId);
                 }

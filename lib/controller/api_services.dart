@@ -1,6 +1,4 @@
-import 'dart:io';
 import 'package:imdp_api_app/models/idModel/by_id_model.dart';
-import 'package:imdp_api_app/product/errors/error_message.dart';
 import 'package:imdp_api_app/product/service/api_static.dart';
 import 'package:imdp_api_app/product/service/project_dio.dart';
 
@@ -16,17 +14,10 @@ enum RequestPath { searchByName, searchById }
 class BookService extends IBookService with ProjectDioMixin {
   @override
   Future<ByIdModel?> searchById(String id) async {
-    final response = await dio.get(ApiStatic.searchById);
-    try {
-      if (response.statusCode == HttpStatus.ok) {
-        final jsonBody = response.data;
-        if (jsonBody is Map<String, dynamic>) {
-          return ByIdModel.fromJson(jsonBody);
-          // freezed paketi kullanılmalı.
-        }
-      }
-    } catch (e) {
-      throw Exception(ProjectException.noData);
+    final response = await dio.get(ApiStatic.searchById + id);
+    final jsonBody = response.data;
+    if (jsonBody is Map<String, dynamic>) {
+      return ByIdModel.fromJson(jsonBody);
     }
     return null;
   }

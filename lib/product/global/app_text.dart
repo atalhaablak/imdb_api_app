@@ -1,8 +1,8 @@
 class AppText {
-  static const String homePage = "Ana Sayfa";
-  static const String detailPage = "Detay Sayfası";
-  static const String searchPage = "Arama Sayfası";
-  static const String historyPage = "Arama Geçmişi";
-  static const String myAccount = "Hesabım";
-  static const String welcome = "Hoş geldiniz,";
+  static const String homePage = "Home Page";
+  static const String detailPage = "Movie Detail";
+  static const String searchPage = "Search Page";
+  static const String historyPage = "History";
+  static const String myAccount = "My Account";
+  static const String welcome = "Welcome to,";
 }

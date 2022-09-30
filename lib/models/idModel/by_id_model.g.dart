@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: non_constant_identifier_names
+
 part of 'by_id_model.dart';
 
 // **************************************************************************
@@ -8,13 +10,10 @@ part of 'by_id_model.dart';
 
 _$_ByIdModel _$$_ByIdModelFromJson(Map<String, dynamic> json) => _$_ByIdModel(
       success: json['success'] as bool?,
-      result: json['result'] == null
-          ? null
-          : Result.fromJson(json['result'] as Map<String, dynamic>),
+      result: json['result'] == null ? null : Result.fromJson(json['result'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_ByIdModelToJson(_$_ByIdModel instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_ByIdModelToJson(_$_ByIdModel instance) => <String, dynamic>{
       'success': instance.success,
       'result': instance.result,
     };
@@ -34,9 +33,7 @@ _$_Result _$$_ResultFromJson(Map<String, dynamic> json) => _$_Result(
       country: json['Country'] as String?,
       awards: json['Awards'] as String?,
       poster: json['Poster'] as String?,
-      ratings: (json['ratings'] as List<dynamic>?)
-          ?.map((e) => Rating.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      ratings: (json['ratings'] as List<dynamic>?)?.map((e) => Rating.fromJson(e as Map<String, dynamic>)).toList(),
       metascore: json['Metascore'] as String?,
       imdbRating: json['imdbRating'] as String?,
       imdbVotes: json['imdbVotes'] as String?,

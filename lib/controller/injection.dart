@@ -5,6 +5,7 @@ import 'package:imdp_api_app/screens/home/home_page_view_model.dart';
 import 'package:imdp_api_app/screens/search/search_view_model.dart';
 import 'package:imdp_api_app/screens/tabbar/tabbar_view_model.dart';
 
+import '../screens/detail/detail_page_view_model.dart';
 import '../screens/historySearch/model/history_search_model.dart';
 
 final serviceLocator = GetIt.instance;
@@ -18,5 +19,8 @@ Future<void> init() async {
   serviceLocator.registerLazySingleton<TabbarViewModel>(() => TabbarViewModel());
   serviceLocator.registerLazySingleton<SearchPageViewModel>(() => SearchPageViewModel());
   serviceLocator.registerLazySingleton<HistorySearchViewModel>(() => HistorySearchViewModel());
+  serviceLocator.registerLazySingleton<DetailPageViewModel>(() => DetailPageViewModel());
+
+  // Hive Adapters
   serviceLocator.registerLazySingleton<HistorySearchModelAdapter>(() => HistorySearchModelAdapter());
 }

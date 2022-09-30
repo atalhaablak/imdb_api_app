@@ -17,18 +17,11 @@ extension AppTextStyleExtension on AppTextStyle {
           overflow: TextOverflow.fade,
         );
       case AppTextStyle.subTitle:
-        return const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        );
+        return const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, overflow: TextOverflow.fade);
       case AppTextStyle.description:
-        return const TextStyle(
-          fontSize: 14,
-        );
+        return const TextStyle(fontSize: 14, overflow: TextOverflow.fade);
       case AppTextStyle.infoText:
-        return const TextStyle(
-          fontSize: 16,
-        );
+        return const TextStyle(fontSize: 16, overflow: TextOverflow.fade);
     }
   }
 }
