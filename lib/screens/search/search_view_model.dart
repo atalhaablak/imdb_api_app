@@ -12,6 +12,7 @@ class SearchPageViewModel extends ChangeNotifier {
   String errorMessage = "";
 
   Future<void> getSearchName(String name) async {
+    isLoading = false;
     try {
       final response = (await service.searchByName(name))?.result;
       movieList = response;
