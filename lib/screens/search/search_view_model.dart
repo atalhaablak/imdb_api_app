@@ -30,5 +30,3 @@ class SearchPageViewModel extends ChangeNotifier {
     notifyListeners();
   }
 }
-
-// movieList![index].poster.toSt
