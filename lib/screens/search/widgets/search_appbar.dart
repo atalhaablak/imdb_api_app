@@ -2,6 +2,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:imdp_api_app/screens/historySearch/model/history_search_model.dart';
 import 'package:imdp_api_app/screens/home/home_page_view.dart';
 import 'package:imdp_api_app/screens/search/search_view_model.dart';
 import 'package:provider/provider.dart';
@@ -61,8 +62,9 @@ class SearchAppBar extends StatelessWidget {
     return InkWell(
         onTap: () {
           final name = serviceLocator<SearchPageViewModel>().nameController.text;
-          // HistorySearchModel search = HistorySearchModel(word: name);
-          serviceLocator<HistorySearchViewModel>().writeHive(name);
+          final date = DateTime.now();
+          HistorySearchModel model = HistorySearchModel(word: name, date: date);
+          serviceLocator<HistorySearchViewModel>().writeHive(model);
           serviceLocator<SearchPageViewModel>().getSearchName(name);
           if (kDebugMode) {
             print(name);

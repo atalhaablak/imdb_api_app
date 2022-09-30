@@ -7,8 +7,11 @@ part 'history_search_model.g.dart';
 class HistorySearchModel {
   @HiveField(0)
   String word;
+  @HiveField(1)
+  DateTime date;
 
   HistorySearchModel({
     required this.word,
+    required this.date,
   });
 }

@@ -18,15 +18,18 @@ class HistorySearchModelAdapter extends TypeAdapter<HistorySearchModel> {
     };
     return HistorySearchModel(
       word: fields[0] as String,
+      date: fields[1] as DateTime,
     );
   }
 
   @override
   void write(BinaryWriter writer, HistorySearchModel obj) {
     writer
-      ..writeByte(1)
+      ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.word);
+      ..write(obj.word)
+      ..writeByte(1)
+      ..write(obj.date);
   }
 
   @override

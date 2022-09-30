@@ -15,6 +15,7 @@ class HistorySearchLsw extends StatelessWidget {
         return ListView.builder(
           itemCount: serviceLocator<HistorySearchViewModel>().readBox.length,
           itemBuilder: (context, index) {
+            var accesList = serviceLocator<HistorySearchViewModel>().readBox[index];
             return Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
@@ -26,14 +27,14 @@ class HistorySearchLsw extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 16),
                         child: Text(
-                          serviceLocator<HistorySearchViewModel>().readBox[index],
+                          serviceLocator<HistorySearchViewModel>().readBox[index].word,
                           style: AppTextStyle.infoText.textStyle,
                         ),
                       ),
                     ],
                   ),
                   Text(
-                    "1 saat",
+                    "${accesList.date.hour.toString()}h",
                     style: AppTextStyle.infoText.textStyle,
                   )
                 ],
